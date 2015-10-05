@@ -236,7 +236,7 @@ module.directive('abnTree', [
         console.log('num root branches = ' + n);
         for_each_branch(function(b, level) {
           b.level = level;
-          return b.expanded = b.level < expand_level;
+          return (b.expanded = (typeof b.expanded == 'boolean') ? b.expanded : (b.level < expand_level));
         });
         if (scope.treeControl != null) {
           if (angular.isObject(scope.treeControl)) {
